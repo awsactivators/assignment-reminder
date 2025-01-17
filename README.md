@@ -1,2 +1,5 @@
 # assignment-reminder
 This is a simple application that helps to manage assignments and sends reminder.
+
+
+// "DefaultConnection": "DataSource=app.db;Cache=Shared"

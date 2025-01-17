@@ -1,0 +1,24 @@
+@model AssignmentReminder.Models.Assignment
+
+<h2>Assignment Details</h2>
+
+<div>
+    <h4>Assignment</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Course Code</dt>
+        <dd class="col-sm-10">@Model.CourseCode</dd>
+        <dt class="col-sm-2">Course Name</dt>
+        <dd class="col-sm-10">@Model.CourseName</dd>
+        <dt class="col-sm-2">Week</dt>
+        <dd class="col-sm-10">@Model.WeekNumber</dd>
+        <dt class="col-sm-2">Type</dt>
+        <dd class="col-sm-10">@Model.Type</dd>
+        <dt class="col-sm-2">Due Date</dt>
+        <dd class="col-sm-10">@Model.DueDate.ToString("g")</dd>
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@Model.IsCompleted</dd>
+    </dl>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
