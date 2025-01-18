@@ -8,6 +8,25 @@
     </div>
 }
 
+<!-- Notifications -->
+@{
+    var dueSoonAssignments = ViewData["DueSoon"] as List<AssignmentReminder.Models.Assignment>;
+}
+@if (dueSoonAssignments != null && dueSoonAssignments.Any())
+{
+    <div class="alert alert-info" role="alert">
+        <h5>Upcoming Assignments</h5>
+        <ul>
+            @foreach (var assignment in dueSoonAssignments)
+            {
+                <li>
+                    <strong>@assignment.CourseName</strong> (Course Code: @assignment.CourseCode) 
+                    is due on @assignment.DueDate.ToString("g").
+                </li>
+            }
+        </ul>
+    </div>
+}
 
 <h2>Your Assignments</h2>
 
@@ -49,7 +68,10 @@
 
 <!-- Overdue Assignments -->
 <h3 class="text-danger">Overdue</h3>
-@if (ViewData["Overdue"] is List<AssignmentReminder.Models.Assignment> overdue && overdue.Any())
+@{
+    var overdueAssignments = ViewData["Overdue"] as List<AssignmentReminder.Models.Assignment>;
+}
+@if (overdueAssignments != null && overdueAssignments.Any())
 {
     <table class="table table-striped">
         <thead>
@@ -62,7 +84,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var assignment in overdue)
+            @foreach (var assignment in overdueAssignments)
             {
                 <tr>
                     <td>@assignment.CourseCode</td>
@@ -85,7 +107,7 @@ else
 
 <!-- Due Soon Assignments -->
 <h3 class="text-warning">Due Soon</h3>
-@if (ViewData["DueSoon"] is List<AssignmentReminder.Models.Assignment> dueSoon && dueSoon.Any())
+@if (dueSoonAssignments != null && dueSoonAssignments.Any())
 {
     <table class="table table-striped">
         <thead>
@@ -99,7 +121,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var assignment in dueSoon)
+            @foreach (var assignment in dueSoonAssignments)
             {
                 var timeRemaining = assignment.DueDate - DateTime.Now;
                 <tr>
@@ -131,10 +153,12 @@ else
     <p class="text-muted">No assignments due soon!</p>
 }
 
-
 <!-- Completed Assignments -->
 <h3 class="text-success">Completed</h3>
-@if (ViewData["Completed"] is List<AssignmentReminder.Models.Assignment> completed && completed.Any())
+@{
+    var completedAssignments = ViewData["Completed"] as List<AssignmentReminder.Models.Assignment>;
+}
+@if (completedAssignments != null && completedAssignments.Any())
 {
     <table class="table table-striped">
         <thead>
@@ -147,7 +171,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var assignment in completed)
+            @foreach (var assignment in completedAssignments)
             {
                 <tr>
                     <td>@assignment.CourseCode</td>

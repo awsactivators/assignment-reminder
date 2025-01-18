@@ -21,6 +21,7 @@ public class AssignmentsController : Controller
     public async Task<IActionResult> Index()
     {
       var userId = _userManager.GetUserId(User);  // Get the logged-in user's ID
+      var userEmail = User.Identity.Name;
       var now = DateTime.Now;
 
       // Fetch all assignments for the logged-in user
@@ -30,7 +31,7 @@ public class AssignmentsController : Controller
 
       // Categorize assignments
       var overdue = assignments.Where(a => a.DueDate < now && !a.IsCompleted).ToList();
-      var dueSoon = assignments.Where(a => a.DueDate >= now && !a.IsCompleted).OrderBy(a => a.DueDate).ToList();
+      var dueSoon = assignments.Where(a => a.DueDate >= now && a.DueDate <= now.AddDays(1) && !a.IsCompleted).OrderBy(a => a.DueDate).ToList();
       var completed = assignments.Where(a => a.IsCompleted).ToList();
 
       // Pass categorized assignments to the view
