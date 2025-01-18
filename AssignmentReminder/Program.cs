@@ -14,6 +14,26 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login";
+    options.LogoutPath = "/Identity/Account/Logout";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.Events.OnRedirectToLogin = context =>
+    {
+        if (!string.IsNullOrEmpty(context.Request.Query["ReturnUrl"]))
+        {
+            context.Response.Redirect(context.Request.Query["ReturnUrl"]);
+        }
+        else
+        {
+            context.Response.Redirect("/Assignments"); // Default redirect
+        }
+        return Task.CompletedTask;
+    };
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

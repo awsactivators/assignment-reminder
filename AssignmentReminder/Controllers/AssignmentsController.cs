@@ -20,12 +20,27 @@ public class AssignmentsController : Controller
     // GET: Assignments
     public async Task<IActionResult> Index()
     {
-        var userId = _userManager.GetUserId(User);
-        var assignments = await _context.Assignments
-            .Where(a => a.UserId == userId)
-            .ToListAsync();
-        return View(assignments);
-    }
+      var userId = _userManager.GetUserId(User);  // Get the logged-in user's ID
+      var now = DateTime.Now;
+
+      // Fetch all assignments for the logged-in user
+      var assignments = await _context.Assignments
+          .Where(a => a.UserId == userId) 
+          .ToListAsync();
+
+      // Categorize assignments
+      var overdue = assignments.Where(a => a.DueDate < now && !a.IsCompleted).ToList();
+      var dueSoon = assignments.Where(a => a.DueDate >= now && !a.IsCompleted).OrderBy(a => a.DueDate).ToList();
+      var completed = assignments.Where(a => a.IsCompleted).ToList();
+
+      // Pass categorized assignments to the view
+      ViewData["Overdue"] = overdue;
+      ViewData["DueSoon"] = dueSoon;
+      ViewData["Completed"] = completed;
+
+
+      return View(assignments); // Pass the filtered list to the view
+  }
 
     // GET: Assignments/Details/5
     public async Task<IActionResult> Details(int? id)
@@ -58,14 +73,37 @@ public class AssignmentsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("CourseCode,CourseName,WeekNumber,Type,DueDate,IsCompleted")] Assignment assignment)
     {
-        if (ModelState.IsValid)
-        {
-            assignment.UserId = _userManager.GetUserId(User);
-            _context.Add(assignment);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        return View(assignment);
+      Console.WriteLine("Entered the Create action.");
+
+      // Set the UserId programmatically
+      assignment.UserId = _userManager.GetUserId(User); 
+
+      // Manually clear any validation errors for UserId
+      ModelState.Remove(nameof(assignment.UserId));
+
+      if (ModelState.IsValid)
+      {
+          Console.WriteLine("ModelState is valid.");
+
+          // Add the assignment to the database
+          _context.Add(assignment);
+          await _context.SaveChangesAsync();
+
+          // Set success message
+          TempData["SuccessMessage"] = "Assignment created successfully!";
+
+          return RedirectToAction(nameof(Index));
+      }
+
+      // Log validation errors if ModelState is invalid
+      Console.WriteLine("ModelState is invalid.");
+      foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+      {
+        Console.WriteLine($"Validation Error: {error.ErrorMessage}");
+      }
+
+      // If ModelState is invalid, redisplay the form
+      return View(assignment);
     }
 
     // GET: Assignments/Edit/5

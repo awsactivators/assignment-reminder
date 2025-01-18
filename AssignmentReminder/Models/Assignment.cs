@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace AssignmentReminder.Models;
 
@@ -16,7 +17,7 @@ public class Assignment
     public int WeekNumber { get; set; }
 
     [Required]
-    public string Type { get; set; } // Lab or Assignment
+    public string Type { get; set; } // Lab, Project, or Assignment
 
     [Required]
     public DateTime DueDate { get; set; }
@@ -24,5 +25,6 @@ public class Assignment
     public bool IsCompleted { get; set; } = false;
 
     // user association
-    public string UserId { get; set; }
+    [BindNever]
+    public string? UserId { get; set; }
 }

@@ -1,6 +1,15 @@
 @model IEnumerable<AssignmentReminder.Models.Assignment>
 
-<h2>Assignments</h2>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+<h2>Your Assignments</h2>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New Assignment</a>
@@ -37,3 +46,123 @@
         }
     </tbody>
 </table>
+
+<!-- Overdue Assignments -->
+<h3 class="text-danger">Overdue</h3>
+@if (ViewData["Overdue"] is List<AssignmentReminder.Models.Assignment> overdue && overdue.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in overdue)
+            {
+                <tr>
+                    <td>@assignment.CourseCode</td>
+                    <td>@assignment.CourseName</td>
+                    <td>@assignment.DueDate.ToString("g")</td>
+                    <td>Overdue</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@assignment.Id" class="btn btn-info btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No overdue assignments!</p>
+}
+
+<!-- Due Soon Assignments -->
+<h3 class="text-warning">Due Soon</h3>
+@if (ViewData["DueSoon"] is List<AssignmentReminder.Models.Assignment> dueSoon && dueSoon.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Due Date</th>
+                <th>Time Remaining</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in dueSoon)
+            {
+                var timeRemaining = assignment.DueDate - DateTime.Now;
+                <tr>
+                    <td>@assignment.CourseCode</td>
+                    <td>@assignment.CourseName</td>
+                    <td>@assignment.DueDate.ToString("g")</td>
+                    <td>
+                        @if (timeRemaining.TotalHours < 24)
+                        {
+                            <span class="text-danger">Due in @timeRemaining.Hours hours</span>
+                        }
+                        else
+                        {
+                            <span class="text-warning">Due in @timeRemaining.Days days</span>
+                        }
+                    </td>
+                    <td>Due Soon</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@assignment.Id" class="btn btn-info btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No assignments due soon!</p>
+}
+
+
+<!-- Completed Assignments -->
+<h3 class="text-success">Completed</h3>
+@if (ViewData["Completed"] is List<AssignmentReminder.Models.Assignment> completed && completed.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in completed)
+            {
+                <tr>
+                    <td>@assignment.CourseCode</td>
+                    <td>@assignment.CourseName</td>
+                    <td>@assignment.DueDate.ToString("g")</td>
+                    <td>Completed</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@assignment.Id" class="btn btn-info btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No completed assignments!</p>
+}
