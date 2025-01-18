@@ -28,6 +28,28 @@
     </div>
 }
 
+@if (ViewData["Notifications"] is List<AssignmentReminder.Models.Notification> notifications && notifications.Any())
+{
+    <div class="alert alert-info" role="alert">
+        <h5>Notifications</h5>
+        <ul>
+            @foreach (var notification in notifications)
+            {
+                <li>
+                    @notification.Message
+                    <button class="btn btn-sm btn-link text-decoration-none" 
+                            onclick="markAsRead(@notification.Id)">Dismiss</button>
+                </li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <p class="text-muted">No new notifications.</p>
+}
+
+
 <h2>Your Assignments</h2>
 
 <p>
@@ -190,3 +212,16 @@ else
 {
     <p class="text-muted">No completed assignments!</p>
 }
+
+<script>
+    function markAsRead(notificationId) {
+        fetch(`/Notifications/MarkAsRead/${notificationId}`, { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    location.reload(); // Reload the page to update notifications
+                } else {
+                    alert("Failed to dismiss the notification.");
+                }
+            });
+    }
+</script>

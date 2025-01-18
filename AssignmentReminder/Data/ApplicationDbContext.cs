@@ -11,9 +11,12 @@ public class ApplicationDbContext : IdentityDbContext
     {
     }
 
-    // DbSet for Assignments and Reminders
+    // DbSet for Assignments, Reminders, Notifications
      public DbSet<Assignment> Assignments { get; set; }
 
      public DbSet<Reminder> Reminders { get; set; }
+
+     public DbSet<Notification> Notifications { get; set; }
+
 
 }

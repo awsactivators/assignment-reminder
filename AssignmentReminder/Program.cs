@@ -22,6 +22,9 @@ builder.Services.AddControllersWithViews();
 // Configure email service
 builder.Services.AddScoped<EmailService>();
 
+builder.Services.AddScoped<NotificationService>();
+
+
 
 // Configure application cookies
 builder.Services.ConfigureApplicationCookie(options =>

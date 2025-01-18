@@ -4,17 +4,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AssignmentReminder.Data;
 using AssignmentReminder.Models;
+using AssignmentReminder.Services;
+
 
 [Authorize]
 public class AssignmentsController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
+    private readonly NotificationService _notificationService;
 
-    public AssignmentsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+    public AssignmentsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, NotificationService notificationService)
     {
         _context = context;
         _userManager = userManager;
+        _notificationService = notificationService;
     }
 
     // GET: Assignments
@@ -26,8 +30,8 @@ public class AssignmentsController : Controller
 
       // Fetch all assignments for the logged-in user
       var assignments = await _context.Assignments
-          .Where(a => a.UserId == userId) 
-          .ToListAsync();
+        .Where(a => a.UserId == userId) 
+        .ToListAsync();
 
       // Categorize assignments
       var overdue = assignments.Where(a => a.DueDate < now && !a.IsCompleted).ToList();
@@ -39,6 +43,9 @@ public class AssignmentsController : Controller
       ViewData["DueSoon"] = dueSoon;
       ViewData["Completed"] = completed;
 
+      // Fetch notifications
+      var notifications = await _notificationService.GetNotificationsAsync(userId);
+      ViewData["Notifications"] = notifications;
 
       return View(assignments); // Pass the filtered list to the view
   }
