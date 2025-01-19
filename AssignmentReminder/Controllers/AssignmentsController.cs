@@ -13,12 +13,25 @@ public class AssignmentsController : Controller
     private readonly ApplicationDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly NotificationService _notificationService;
+    private readonly PostmarkEmailService _emailService;
 
-    public AssignmentsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, NotificationService notificationService)
+    public AssignmentsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, NotificationService notificationService, PostmarkEmailService emailService)
     {
         _context = context;
         _userManager = userManager;
         _notificationService = notificationService;
+        _emailService = emailService;
+    }
+
+    public async Task<IActionResult> TestPostmarkEmail()
+    {
+        var success = await _emailService.SendEmailAsync(
+            "n01613636@humber.ca",
+            "Test Email from Postmark",
+            "This is a test email using Postmark!"
+        );
+
+        return Ok(success ? "Email sent successfully!" : "Failed to send email.");
     }
 
     // GET: Assignments
@@ -137,7 +150,7 @@ public class AssignmentsController : Controller
     // POST: Assignments/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,CourseCode,CourseName,WeekNumber,Type,DueDate,IsCompleted")] Assignment assignment)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,CourseCode,CourseName,WeekNumber,Type,Grade,DueDate,IsCompleted")] Assignment assignment)
     {
         if (id != assignment.Id)
         {
@@ -153,6 +166,7 @@ public class AssignmentsController : Controller
 
                 _context.Update(assignment);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Assignment updated successfully!";
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -212,4 +226,6 @@ public class AssignmentsController : Controller
     {
         return _context.Assignments.Any(e => e.Id == id);
     }
+
+
 }

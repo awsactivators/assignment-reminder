@@ -20,5 +20,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="Postmark" Version="5.2.0" />
   </ItemGroup>
 </Project>

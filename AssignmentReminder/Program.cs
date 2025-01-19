@@ -24,6 +24,9 @@ builder.Services.AddScoped<EmailService>();
 
 builder.Services.AddScoped<NotificationService>();
 
+builder.Services.AddScoped<PostmarkEmailService>();
+
+
 
 
 // Configure application cookies

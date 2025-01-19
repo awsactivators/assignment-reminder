@@ -63,6 +63,7 @@ else
             <th>Course Name</th>
             <th>Week</th>
             <th>Type</th>
+            <th>Grade</th>
             <th>Due Date</th>
             <th>Status</th>
             <th>Actions</th>
@@ -76,6 +77,7 @@ else
                 <td>@assignment.CourseName</td>
                 <td>@assignment.WeekNumber</td>
                 <td>@assignment.Type</td>
+                <td>@assignment.Grade </td>
                 <td>@assignment.DueDate.ToString("g")</td>
                 <td>@(assignment.IsCompleted ? "Completed" : "Not Completed")</td>
                 <td>

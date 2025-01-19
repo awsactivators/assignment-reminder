@@ -313,3 +313,4 @@
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/zh-TW/Hangfire.Core.resources.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/zh/Hangfire.Core.resources.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
+/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Postmark.dll

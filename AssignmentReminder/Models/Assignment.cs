@@ -27,4 +27,6 @@ public class Assignment
     // user association
     [BindNever]
     public string? UserId { get; set; }
+
+    public double? Grade { get; set; }
 }
