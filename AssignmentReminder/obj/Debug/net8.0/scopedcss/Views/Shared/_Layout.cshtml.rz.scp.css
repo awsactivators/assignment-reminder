@@ -17,6 +17,22 @@ a[b-m332bv0ejf] {
   border-color: #1861ac;
 }
 
+/* body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  flex: 1;
+} */
+
 .nav-pills .nav-link.active[b-m332bv0ejf], .nav-pills .show > .nav-link[b-m332bv0ejf] {
   color: #fff;
   background-color: #1b6ec2;
@@ -26,6 +42,7 @@ a[b-m332bv0ejf] {
 .border-top[b-m332bv0ejf] {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom[b-m332bv0ejf] {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -39,10 +56,11 @@ button.accept-policy[b-m332bv0ejf] {
   line-height: inherit;
 }
 
-.footer[b-m332bv0ejf] {
-  position: absolute;
+/* .footer {
+  position: relative;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
-}
+  margin-top: auto;
+} */

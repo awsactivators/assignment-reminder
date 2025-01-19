@@ -1,4 +1,4 @@
-html {
+/* html {
   font-size: 14px;
 }
 
@@ -19,4 +19,192 @@ html {
 
 body {
   margin-bottom: 60px;
+} */
+
+/* General Styles */
+html, body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+h2, h3, h4 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  flex: 1;
+}
+
+.main-wrapper {
+  margin-bottom: 50px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.navbar a.nav-link {
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar a.nav-link:hover {
+  color: #e0e0e0;
+}
+
+.navbar .navbar-brand {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar .btn {
+  background-color: #ffcc00;
+  color: #343a40;
+  border: none;
+}
+
+/* Footer */
+.footer {
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: auto; /* Ensures footer is pushed to the bottom */
+  width: 100%;
+}
+
+.footer a {
+  color: #007bff;
+}
+
+.footer a:hover {
+  color: #0056b3;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.btn-primary:hover {
+  background-color: #155a99;
+  border-color: #144a80;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #bd2130;
+}
+
+.btn-danger:hover {
+  background-color: #bd2130;
+  border-color: #9e1b28;
+}
+
+.create-btn, .edit-btn, .delete-btn {
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  margin-left: 15px;
+}
+
+.login-user {
+  margin-top: 15px;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.alert h5 {
+  margin-bottom: 0.5rem;
+}
+
+/* Tables */
+.table {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.text-muted {
+  font-size: 0.85rem;
+}
+
+/* Forms */
+.form-control {
+  border-radius: 5px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  margin-top: 5px;
+}
+
+button[type="submit"] {
+  margin-top: 15px;
+}
+
+/* Overdue, Due Soon, Completed Section Headers */
+.text-danger {
+  font-weight: bold;
+  color: #dc3545 !important;
+}
+
+.text-warning {
+  font-weight: bold;
+  color: #ffc107 !important;
+}
+
+.text-success {
+  font-weight: bold;
+  color: #28a745 !important;
+}
+
+/* Miscellaneous */
+.box-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
 }

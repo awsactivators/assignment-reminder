@@ -42,7 +42,6 @@
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Microsoft.SqlServer.Server.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Microsoft.Win32.SystemEvents.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Mono.TextTemplating.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/SQLitePCLRaw.batteries_v2.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/SQLitePCLRaw.core.dll
@@ -54,13 +53,10 @@
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Composition.Runtime.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Composition.TypedParts.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Drawing.Common.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Memory.Data.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Runtime.Caching.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Security.Permissions.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Windows.Extensions.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll
@@ -285,10 +281,6 @@
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
-/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Hangfire.AspNetCore.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Hangfire.Core.dll
@@ -314,3 +306,8 @@
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/zh/Hangfire.Core.resources.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
 /Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/Postmark.dll
+/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Formats.Asn1.dll
+/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.IO.Pipelines.dll
+/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Text.Encodings.Web.dll
+/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/System.Text.Json.dll
+/Users/Genevieve/Documents/personal-projects/software-development/assignment-reminder/AssignmentReminder/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
