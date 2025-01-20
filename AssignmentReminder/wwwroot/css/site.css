@@ -44,6 +44,10 @@ h2, h3, h4 {
   width: 100%;
 }
 
+.row {
+  margin-top: 40px;
+}
+
 .container-fluid {
   flex: 1;
   padding: 15px;

@@ -50,6 +50,10 @@ public class AssignmentsController : Controller
       var overdue = assignments.Where(a => a.DueDate < now && !a.IsCompleted).ToList();
       var dueSoon = assignments.Where(a => a.DueDate >= now && a.DueDate <= now.AddDays(1) && !a.IsCompleted).OrderBy(a => a.DueDate).ToList();
       var completed = assignments.Where(a => a.IsCompleted).ToList();
+      var mainAssignments = assignments
+        .Where(a => a.DueDate >= now && !a.IsCompleted) // Exclude overdue and completed
+        .Except(overdue.Concat(completed))
+        .ToList();
 
       // Pass categorized assignments to the view
       ViewData["Overdue"] = overdue;
@@ -60,7 +64,7 @@ public class AssignmentsController : Controller
       var notifications = await _notificationService.GetNotificationsAsync(userId);
       ViewData["Notifications"] = notifications;
 
-      return View(assignments); // Pass the filtered list to the view
+      return View(mainAssignments); // Pass the filtered list to the view
   }
 
     // GET: Assignments/Details/5
