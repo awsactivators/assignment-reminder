@@ -41,6 +41,12 @@ h2, h3, h4 {
   margin-top: 20px;
   margin-bottom: 40px;
   flex: 1;
+  width: 100%;
+}
+
+.container-fluid {
+  flex: 1;
+  padding: 15px;
 }
 
 .main-wrapper {
@@ -80,8 +86,9 @@ h2, h3, h4 {
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  margin-top: auto; /* Ensures footer is pushed to the bottom */
+  margin-top: auto; 
   width: 100%;
+  position: relative;
 }
 
 .footer a {
@@ -133,6 +140,9 @@ h2, h3, h4 {
 .alert {
   border-radius: 5px;
   font-size: 0.9rem;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .alert h5 {
@@ -143,11 +153,19 @@ h2, h3, h4 {
 .table {
   background-color: #fff;
   border: 1px solid #dee2e6;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 
 .table th {
   background-color: #007bff;
   color: #fff;
+}
+
+.action-col {
+  width: 200px;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -208,3 +226,103 @@ button[type="submit"] {
 .mb-3 {
   margin-bottom: 1rem;
 }
+
+
+/* Extra small devices (phones, less than 576px) */
+/* @media (max-width: 575.98px) {
+  .navbar-brand {
+      font-size: 1.2rem;
+  }
+  table {
+      font-size: 0.9rem;
+      margin-right: 50px;
+  }
+
+  .container {
+    width: 100%;
+  }
+} */
+
+/* Small devices (tablets, 576px and up) */
+/* @media (min-width: 576px) and (max-width: 767.98px) {
+  .navbar-brand {
+      font-size: 1.5rem;
+  }
+  table {
+      font-size: 1rem;
+      margin-right: 50px;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+  }
+
+  .footer {
+      text-align: center;
+      width: 100%;
+  }
+
+  .alert, .table {
+      width: 100%; 
+  }
+} */
+
+/* Medium devices (desktops, 768px and up) */
+/* @media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+      padding: 0 20px;
+      width: 100%;
+  }
+} */
+
+/* Large devices (desktops, 992px and up) */
+/* @media (min-width: 992px) {
+  .container {
+      width: 100%;
+  }
+} */
+
+/* Small devices (phones, less than 768px) */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .alert h5 {
+    font-size: 1rem;
+  }
+
+  .table th, .table td {
+    font-size: 0.9rem;
+  }
+
+  .table-responsive-md {
+    overflow-x: auto;
+  }
+
+  .footer {
+    text-align: center;
+
+  }
+
+  .alert {
+    margin-bottom: 1rem;
+    padding: 10px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+/* @media (min-width: 768px) {
+  .container-fluid {
+    padding: 20px 40px;
+  }
+} */
+
+/* Large devices (desktops, 992px and up) */
+/* @media (min-width: 992px) {
+  .container-fluid {
+    padding: 20px 60px;
+  }
+} */
