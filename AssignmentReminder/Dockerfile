@@ -7,9 +7,10 @@ WORKDIR /src
 # Copy only the project file first for better caching
 COPY AssignmentReminder/*.csproj ./AssignmentReminder/
 
+# Clear NuGet cache before restoring packages
+RUN dotnet nuget locals all --clear
+
 # Restore dependencies before copying the entire project
-WORKDIR /src/AssignmentReminder
-RUN dotnet nuget locals --clear all
 RUN dotnet restore AssignmentReminder/AssignmentReminder.csproj
 
 # Copy the rest of the application files
