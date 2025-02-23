@@ -1,35 +1,32 @@
-# Use official .NET SDK for building
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# Use Alpine for a smaller image
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 
-# Set the working directory inside the container
 WORKDIR /src
-
-# Copy only the project file first for better caching
 COPY AssignmentReminder/*.csproj ./AssignmentReminder/
 
-# Ensure NuGet cache is cleared before restoring dependencies
+# Install dependencies for Alpine (if needed)
+RUN apk add --no-cache icu-libs bash
+
+# Clear NuGet cache before restore
 RUN dotnet nuget locals all --clear
 
-# Restore dependencies explicitly
+# Restore dependencies
 RUN dotnet restore --disable-parallel --verbosity minimal AssignmentReminder/AssignmentReminder.csproj
 
-# Copy the rest of the application files after restore is complete
+# Copy remaining files
 COPY AssignmentReminder/. ./AssignmentReminder/
 WORKDIR /src/AssignmentReminder
 
-# Build the application (without restoring)
+# Build and publish
 RUN dotnet build -c Release --no-restore
-
-# Publish the application
 RUN dotnet publish -c Release -o /app --no-build
 
-# Use a lightweight runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+# Use Alpine runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS runtime
 WORKDIR /app
 COPY --from=build /app .
 
-# Expose the port your application listens on
+# Expose port
 EXPOSE 8088
 
-# Run the application
 CMD ["dotnet", "AssignmentReminder.dll"]
