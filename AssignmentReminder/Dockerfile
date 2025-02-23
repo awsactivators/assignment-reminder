@@ -1,14 +1,16 @@
-# Use the official .NET SDK as the base image for building and running
+# Use the official .NET SDK as the base image for building
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 # Set the working directory inside the container
 WORKDIR /src
 
-# Copy the project file and restore dependencies
+# Copy only the project file first for better caching
 COPY AssignmentReminder/*.csproj ./AssignmentReminder/
+
+# Restore dependencies before copying the entire project
 RUN dotnet restore AssignmentReminder/AssignmentReminder.csproj
 
-# Copy the rest of the application files and move to the project directory
+# Copy the rest of the application files
 COPY AssignmentReminder/. ./AssignmentReminder/
 WORKDIR /src/AssignmentReminder
 
