@@ -8,6 +8,8 @@ WORKDIR /src
 COPY AssignmentReminder/*.csproj ./AssignmentReminder/
 
 # Restore dependencies before copying the entire project
+WORKDIR /src/AssignmentReminder
+RUN dotnet nuget locals --clear all
 RUN dotnet restore AssignmentReminder/AssignmentReminder.csproj
 
 # Copy the rest of the application files
