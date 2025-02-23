@@ -1,0 +1,9 @@
+bin/
+obj/
+.nuget/
+packages/
+*.user
+*.suo
+*.vsp
+*.vspx
+*.vspscc

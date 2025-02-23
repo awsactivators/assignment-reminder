@@ -1,4 +1,4 @@
-# Use the official .NET SDK as the base image for building
+# Use official .NET SDK for building
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 # Set the working directory inside the container
@@ -7,17 +7,17 @@ WORKDIR /src
 # Copy only the project file first for better caching
 COPY AssignmentReminder/*.csproj ./AssignmentReminder/
 
-# Clear NuGet cache before restoring packages
+# Ensure NuGet cache is cleared before restoring dependencies
 RUN dotnet nuget locals all --clear
 
-# Restore dependencies before copying the entire project
-RUN dotnet restore AssignmentReminder/AssignmentReminder.csproj
+# Restore dependencies explicitly
+RUN dotnet restore --disable-parallel --verbosity minimal AssignmentReminder/AssignmentReminder.csproj
 
-# Copy the rest of the application files
+# Copy the rest of the application files after restore is complete
 COPY AssignmentReminder/. ./AssignmentReminder/
 WORKDIR /src/AssignmentReminder
 
-# Build the application
+# Build the application (without restoring)
 RUN dotnet build -c Release --no-restore
 
 # Publish the application
