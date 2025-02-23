@@ -18,7 +18,7 @@ COPY AssignmentReminder/. ./AssignmentReminder/
 WORKDIR /src/AssignmentReminder
 
 # Build and publish
-RUN dotnet build -c Release --no-restore
+RUN dotnet build -c Release 
 RUN dotnet publish -c Release -o /app --no-build
 
 # Use Alpine runtime
