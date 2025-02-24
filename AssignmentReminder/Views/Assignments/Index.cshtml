@@ -37,28 +37,6 @@
             {
                 <p class="text-muted">No new notifications.</p>
             }
-            
-
-            @* @if (ViewData["Notifications"] is List<AssignmentReminder.Models.Notification> notifications && notifications.Any())
-            {
-                <div class="alert alert-info" role="alert">
-                    <h5>Notifications</h5>
-                    <ul>
-                        @foreach (var notification in notifications)
-                        {
-                            <li>
-                                @notification.Message
-                                <button class="btn btn-sm btn-link text-decoration-none" 
-                                        onclick="markAsRead(@notification.Id)">Dismiss</button>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            }
-            else
-            {
-                <p class="text-muted">No new notifications.</p>
-            } *@
         </div>
     </div>
 
@@ -70,10 +48,10 @@
             <h2>Your Assignments</h2>
         </div>
         <div class="col-12 mb-3">
-            <a asp-action="Create" class="btn btn-primary">Create New Assignment</a>
+            <a asp-action="Create" class="btn btn-primary create-assignment">Create New Assignment</a>
         </div>
-        <div class="col-12">
-            <table class="table table-striped table-responsive-md">
+        <div class="col-12 upcoming">
+            <table class="table table-striped table-responsive-md table-hover">
                 <thead>
                     <tr>
                         <th>Course Code</th>
@@ -98,7 +76,7 @@
                             <td>@assignment.DueDate.ToString("g")</td>
                             <td>@(assignment.IsCompleted ? "Completed" : "Not Completed")</td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm">Edit</a>
+                                <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm edit-btn">Edit</a>
                                 <a asp-action="Details" asp-route-id="@assignment.Id" class="btn btn-info btn-sm">Details</a>
                                 <a asp-action="Delete" asp-route-id="@assignment.Id" class="btn btn-danger btn-sm">Delete</a>
                             </td>
@@ -110,7 +88,7 @@
     </div>
 
     <!-- Overdue Assignments -->
-    <div class="row">
+    <div class="row overdue">
         <div class="col-12">
             <h3 class="text-danger">Overdue</h3>
         </div>
@@ -142,7 +120,7 @@
                               <td>@assignment.DueDate.ToString("g")</td>
                               <td>Overdue</td>
                               <td>
-                                  <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm">Edit</a>
+                                  <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm edit-btn">Edit</a>
                                   <a asp-action="Details" asp-route-id="@assignment.Id" class="btn btn-info btn-sm">Details</a>
                                   <a asp-action="Delete" asp-route-id="@assignment.Id" class="btn btn-danger btn-sm">Delete</a>
                               </td>
@@ -159,7 +137,7 @@
     </div>
 
     <!-- Due Soon Assignments -->
-    <div class="row">
+    <div class="row duesoon">
         <div class="col-12">
             <h3 class="text-warning">Due Soon</h3>
         </div>
@@ -202,7 +180,7 @@
                                 </td>
                                 @* <td>Due Soon</td> *@
                                 <td>
-                                    <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm">Edit</a>
+                                    <a asp-action="Edit" asp-route-id="@assignment.Id" class="btn btn-warning btn-sm edit-btn">Edit</a>
                                     <a asp-action="Details" asp-route-id="@assignment.Id" class="btn btn-info btn-sm">Details</a>
                                 </td>
                             </tr>
@@ -218,7 +196,7 @@
     </div>
 
     <!-- Completed Assignments -->
-    <div class="row">
+    <div class="row completed">
         <div class="col-12">
             <h3 class="text-success">Completed</h3>
         </div>
@@ -266,15 +244,4 @@
     </div>
 </div>
 
-@* <script>
-    function markAsRead(notificationId) {
-        fetch(`/Notifications/MarkAsRead/${notificationId}`, { method: 'POST' })
-            .then(response => {
-                if (response.ok) {
-                    location.reload(); 
-                } else {
-                    alert("Failed to dismiss the notification.");
-                }
-            });
-    }
-</script> *@
+

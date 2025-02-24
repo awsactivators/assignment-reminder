@@ -2,7 +2,7 @@
 
 <h2>Edit Assignment</h2>
 
-<form asp-action="Edit">
+<form asp-action="Edit" class="form-container">
     <input type="hidden" asp-for="Id" />
     <div class="form-group">
         <label asp-for="CourseCode"></label>
@@ -43,6 +43,5 @@
         <span asp-validation-for="IsCompleted" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary edit-btn">Save</button>
+    <a asp-action="Index" class="btn btn-secondary cancel-btn">Cancel</a>
 </form>
-
-<a asp-action="Index" class="btn btn-secondary">Back to List</a>
