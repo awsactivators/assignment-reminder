@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssignmentReminder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c13f061c34fe6ce42d6383961230852cc46ba6e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f88b3326fa891148e2afe07d28142f7c481cfcb")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssignmentReminder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssignmentReminder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
