@@ -92,7 +92,7 @@
         <div class="col-12">
             <h3 class="text-danger">Overdue</h3>
         </div>
-        <div class="col-12">
+        <div class="col-12 table-responsive">
             @if (ViewData["Overdue"] is List<AssignmentReminder.Models.Assignment> overdueAssignments && overdueAssignments.Any())
             {
                 <table class="table table-striped table-responsive-md">
@@ -141,7 +141,7 @@
         <div class="col-12">
             <h3 class="text-warning">Due Soon</h3>
         </div>
-        <div class="col-12">
+        <div class="col-12 table-responsive">
             @if (dueSoonAssignments != null && dueSoonAssignments.Any())
             {
                 <table class="table table-striped table-responsive-md">
@@ -200,7 +200,7 @@
         <div class="col-12">
             <h3 class="text-success">Completed</h3>
         </div>
-        <div class="col-12">
+        <div class="col-12 table-responsive">
             @if (ViewData["Completed"] is List<AssignmentReminder.Models.Assignment> completedAssignments && completedAssignments.Any())
             {
                 <table class="table table-striped table-responsive-md">

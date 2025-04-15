@@ -297,6 +297,11 @@ html, body {
   margin-top: 5px;
 }
 
+.table-responsive, .upcoming {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
 
 /* Footer */
